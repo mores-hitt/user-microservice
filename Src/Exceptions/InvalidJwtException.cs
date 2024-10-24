@@ -1,4 +1,4 @@
-namespace Cubitwelve.Src.Exceptions
+namespace user_microservice.Src.Exceptions
 {
     public class InvalidJwtException : Exception
     {
