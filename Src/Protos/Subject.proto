@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "user_microservice.Src.Protos";
+
+package SubjectAPI;
+
+service SubjectGrpc {
+    rpc GetAll (Empty) returns (GetAllResponse);
+    rpc GetAllRelationships (Empty) returns (GetAllRelationshipsResponse);
+}
+
+
+message Empty {
+
+}
+
+message GetAllResponse {
+    repeated SubjectResponse subjects = 1;
+}
+
+message SubjectResponse {
+    string Code = 1;
+    string Name = 2;
+    string Department = 3;
+    int32 Credits = 4;
+    int32 Semester = 5;
+}
+
+message GetAllRelationshipsResponse {
+    repeated RelationshipResponse relationships = 1;
+}
+
+message RelationshipResponse {
+    string SubjectCode = 1;
+    string PreSubjectCode = 2;
+}
