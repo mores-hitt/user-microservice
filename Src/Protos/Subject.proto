@@ -19,11 +19,12 @@ message GetAllResponse {
 }
 
 message SubjectResponse {
-    string Code = 1;
-    string Name = 2;
-    string Department = 3;
-    int32 Credits = 4;
-    int32 Semester = 5;
+    string code = 1;
+    string name = 2;
+    string department = 3;
+    int32 credits = 4;
+    int32 semester = 5;
+    int32 id = 6;
 }
 
 message GetAllRelationshipsResponse {
@@ -31,6 +32,6 @@ message GetAllRelationshipsResponse {
 }
 
 message RelationshipResponse {
-    string SubjectCode = 1;
-    string PreSubjectCode = 2;
+    string subject_code = 1;
+    string pre_subject_code = 2;
 }
