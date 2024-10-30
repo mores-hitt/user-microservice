@@ -3,6 +3,7 @@ using AutoMapper;
 using user_microservice.Src.DTOs.Models;
 using user_microservice.Src.DTOs.Subjects;
 using user_microservice.Src.Models;
+using user_microservice.Src.Protos;
 
 namespace user_microservice.Src.Extensions
 {
@@ -10,13 +11,8 @@ namespace user_microservice.Src.Extensions
     {
         public MappingProfile()
         {
-            //CreateMap<Career, CareerDto>();
-            //CreateMap<Role, RoleDto>();
-            //CreateMap<User, UserDto>();
-            //CreateMap<User, LoginResponseDto>();
-            //CreateMap<RegisterStudentDto, User>();
-            CreateMap<Subject, SubjectsDTO>();
-            //CreateMap<SubjectRelationship, SubjectRelationshipDto>();
+            CreateMap<Subject, SubjectResponse>();
+            CreateMap<SubjectRelationship, RelationshipResponse>();
         }
     }
 }
