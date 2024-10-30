@@ -1,4 +1,5 @@
 using AutoMapper;
+using Google.Protobuf.Collections;
 using user_microservice.Src.Services.Interfaces;
 
 namespace user_microservice.Src.Services
@@ -21,6 +22,13 @@ namespace user_microservice.Src.Services
         {
             var mappedObjects = sourceItems.Select(x => _mapper.Map<TDestination>(x)).ToList();
             return mappedObjects;
+        }
+
+        public RepeatedField<TDestination> MapRepeatedField<TSource, TDestination>(List<TSource> sourceItems)
+        {
+            var repeatedField = new RepeatedField<TDestination>();
+            repeatedField.AddRange(sourceItems.Select(x => _mapper.Map<TDestination>(x)));
+            return repeatedField;
         }
     }
 }
