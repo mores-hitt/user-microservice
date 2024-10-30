@@ -6,6 +6,7 @@ namespace user_microservice.Src.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private ISubjectsRepository _subjectsRepository = null!;
+        private ISubjectRelationshipsRepository _subjectRelationshipsRepository = null!;
         //TODO: poner los repository que faltan
 
         private readonly DataContext _context;
@@ -23,6 +24,16 @@ namespace user_microservice.Src.Repositories
                 _subjectsRepository ??= new SubjectsRepository(_context);
 
                 return _subjectsRepository;
+            }
+        }
+
+        public ISubjectRelationshipsRepository SubjectRelationshipsRepository
+        {
+            get
+            {
+                _subjectRelationshipsRepository ??= new SubjectRelationshipsRepository(_context);
+
+                return _subjectRelationshipsRepository;
             }
         }
 

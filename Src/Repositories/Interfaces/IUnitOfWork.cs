@@ -8,6 +8,7 @@ namespace user_microservice.Src.Repositories.Interfaces
         /// </summary>
         /// <value>A Concrete class for ISubjectsRepository</value>
         public ISubjectsRepository SubjectsRepository { get; }
+        public ISubjectRelationshipsRepository SubjectRelationshipsRepository { get; }
 
     }
 }
