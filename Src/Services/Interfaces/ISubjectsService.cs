@@ -11,5 +11,7 @@ namespace user_microservice.Src.Services.Interfaces
 
         public Task<MapField<string, PrerequisiteResponse>> GetAllPrerequisites();
 
+        public Task<MapField<string, PostRequisiteResponse>> GetAllPostRequisites();
+
     }
 }

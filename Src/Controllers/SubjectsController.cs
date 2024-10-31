@@ -51,5 +51,15 @@ namespace user_microservice.Src.Controllers
             return response;
         }
 
+        public override async Task<GetAllPostRequisitesResponse> GetAllPostRequisites(Empty request, ServerCallContext context)
+        {
+            var postRequisites = await _subjectsService.GetAllPostRequisites();
+
+            var response = new GetAllPostRequisitesResponse();
+
+            response.PostRequisites.Add(postRequisites);
+
+            return response;
+        }
     }
 }

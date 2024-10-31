@@ -63,5 +63,26 @@ namespace user_microservice.Src.Services
 
             return dictionary;
         }
+
+        public async Task<MapField<string, PostRequisiteResponse>> GetAllPostRequisites()
+        {
+            var relationshipsList = await _unitOfWork.SubjectRelationshipsRepository.Get();
+            var dictionary = new MapField<string, PostRequisiteResponse>();
+
+            relationshipsList.ForEach(r => 
+            {
+                if (!dictionary.ContainsKey(r.PreSubjectCode))
+                {
+                    var postRequisites = new PostRequisiteResponse();
+                    postRequisites.SubjectCode.Add(r.SubjectCode);
+
+                    dictionary.Add(r.PreSubjectCode, postRequisites);
+                } else {
+                    dictionary[r.PreSubjectCode].SubjectCode.Add(r.SubjectCode);
+                }
+            });
+
+            return dictionary;
+        }
     }
 }

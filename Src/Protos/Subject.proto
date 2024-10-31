@@ -8,6 +8,7 @@ service SubjectGrpc {
     rpc GetAll (Empty) returns (GetAllResponse);
     rpc GetAllRelationships (Empty) returns (GetAllRelationshipsResponse);
     rpc GetAllPrerequisites (Empty) returns (GetAllPrerequisitesResponse);
+    rpc GetAllPostRequisites (Empty) returns (GetAllPostRequisitesResponse);
 }
 
 
@@ -42,5 +43,13 @@ message GetAllPrerequisitesResponse {
 }
 
 message PrerequisiteResponse {
+    repeated string subject_code = 1;
+}
+
+message GetAllPostRequisitesResponse {
+    map <string, PostRequisiteResponse> post_requisites = 1;
+}
+
+message PostRequisiteResponse {
     repeated string subject_code = 1;
 }
