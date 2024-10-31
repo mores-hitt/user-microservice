@@ -53,11 +53,11 @@ namespace user_microservice.Src.Services
                 if (!dictionary.ContainsKey(r.SubjectCode))
                 {
                     var preRequisites = new PrerequisiteResponse();
-                    preRequisites.SubjectCode.Add(r.PreSubjectCode);
+                    preRequisites.PreSubjectCode.Add(r.PreSubjectCode);
 
                     dictionary.Add(r.SubjectCode, preRequisites);
                 } else {
-                    dictionary[r.SubjectCode].SubjectCode.Add(r.PreSubjectCode);
+                    dictionary[r.SubjectCode].PreSubjectCode.Add(r.PreSubjectCode);
                 }
             });
 
@@ -74,11 +74,11 @@ namespace user_microservice.Src.Services
                 if (!dictionary.ContainsKey(r.PreSubjectCode))
                 {
                     var postRequisites = new PostRequisiteResponse();
-                    postRequisites.SubjectCode.Add(r.SubjectCode);
+                    postRequisites.PostSubjectCode.Add(r.SubjectCode);
 
                     dictionary.Add(r.PreSubjectCode, postRequisites);
                 } else {
-                    dictionary[r.PreSubjectCode].SubjectCode.Add(r.SubjectCode);
+                    dictionary[r.PreSubjectCode].PostSubjectCode.Add(r.SubjectCode);
                 }
             });
 

@@ -43,7 +43,7 @@ message GetAllPrerequisitesResponse {
 }
 
 message PrerequisiteResponse {
-    repeated string subject_code = 1;
+    repeated string pre_subject_code = 1;
 }
 
 message GetAllPostRequisitesResponse {
@@ -51,5 +51,5 @@ message GetAllPostRequisitesResponse {
 }
 
 message PostRequisiteResponse {
-    repeated string subject_code = 1;
+    repeated string post_subject_code = 1;
 }
