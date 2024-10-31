@@ -1,7 +1,6 @@
 using Grpc.Core;
 using user_microservice.Src.Protos;
 
-using user_microservice.Src.DTOs.Subjects;
 using user_microservice.Src.Services.Interfaces;
 
 
@@ -37,6 +36,17 @@ namespace user_microservice.Src.Controllers
             var response = new GetAllRelationshipsResponse();
 
             response.Relationships.AddRange(relationships);
+
+            return response;
+        }
+
+        public override async Task<GetAllPrerequisitesResponse> GetAllPrerequisites(Empty request, ServerCallContext context)
+        {
+            var prerequisites = await _subjectsService.GetAllPrerequisites();
+
+            var response = new GetAllPrerequisitesResponse();
+
+            response.Prerequisites.Add(prerequisites);
 
             return response;
         }

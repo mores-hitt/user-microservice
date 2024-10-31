@@ -1,7 +1,4 @@
 using AutoMapper;
-//using user_microservice.Src.DTOs.Auth;
-using user_microservice.Src.DTOs.Models;
-using user_microservice.Src.DTOs.Subjects;
 using user_microservice.Src.Models;
 using user_microservice.Src.Protos;
 

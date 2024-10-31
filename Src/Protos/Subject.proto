@@ -7,6 +7,7 @@ package SubjectAPI;
 service SubjectGrpc {
     rpc GetAll (Empty) returns (GetAllResponse);
     rpc GetAllRelationships (Empty) returns (GetAllRelationshipsResponse);
+    rpc GetAllPrerequisites (Empty) returns (GetAllPrerequisitesResponse);
 }
 
 
@@ -34,4 +35,12 @@ message GetAllRelationshipsResponse {
 message RelationshipResponse {
     string subject_code = 1;
     string pre_subject_code = 2;
+}
+
+message GetAllPrerequisitesResponse {
+    map <string, PrerequisiteResponse> prerequisites = 1;
+}
+
+message PrerequisiteResponse {
+    repeated string subject_code = 1;
 }
