@@ -2,18 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "user_microservice.Src.Protos";
 
-package SubjectAPI;
+import "Src/Protos/Common.proto";
 
 service SubjectGrpc {
     rpc GetAll (Empty) returns (GetAllResponse);
     rpc GetAllRelationships (Empty) returns (GetAllRelationshipsResponse);
     rpc GetAllPrerequisites (Empty) returns (GetAllPrerequisitesResponse);
     rpc GetAllPostRequisites (Empty) returns (GetAllPostRequisitesResponse);
-}
-
-
-message Empty {
-
 }
 
 message GetAllResponse {
