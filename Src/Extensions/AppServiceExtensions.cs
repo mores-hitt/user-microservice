@@ -34,9 +34,9 @@ namespace user_microservice.Src.Extensions
 
         private static void AddServices(IServiceCollection services)
         {
-            //services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IMapperService, MapperService>();
-            //services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthService, AuthService>();
             //services.AddScoped<ICareersService, CareersService>();
             services.AddScoped<ISubjectsService, SubjectsService>();
             //services.AddScoped<IResourcesService, ResourcesService>();

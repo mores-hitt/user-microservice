@@ -76,6 +76,7 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 app.MapGrpcService<SubjectsController>();
+app.MapGrpcService<UsersController>();
 
 // Database Bootstrap
 AppSeedService.SeedDatabase(app);

@@ -10,6 +10,8 @@ namespace user_microservice.Src.Extensions
         {
             CreateMap<Subject, SubjectDto>();
             CreateMap<SubjectRelationship, SubjectRelationshipDto>();
+            CreateMap<User, UserDto>();
+            CreateMap<Career, CareerDto>();
         }
     }
 }
