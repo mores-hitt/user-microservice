@@ -10,5 +10,11 @@ namespace user_microservice.Src.Repositories.Interfaces
         public ISubjectsRepository SubjectsRepository { get; }
         public ISubjectRelationshipsRepository SubjectRelationshipsRepository { get; }
 
+        public IUsersRepository UsersRepository { get; }
+
+        public IRolesRepository RolesRepository { get; }
+
+        public ICareersRepository CareersRepository { get; }
+
     }
 }

@@ -7,6 +7,12 @@ namespace user_microservice.Src.Repositories
     {
         private ISubjectsRepository _subjectsRepository = null!;
         private ISubjectRelationshipsRepository _subjectRelationshipsRepository = null!;
+
+        private IUsersRepository _usersRepository = null!;
+
+        private IRolesRepository _rolesRepository = null!;
+
+        private ICareersRepository  _careersRepository = null!;
         //TODO: poner los repository que faltan
 
         private readonly DataContext _context;
@@ -34,6 +40,36 @@ namespace user_microservice.Src.Repositories
                 _subjectRelationshipsRepository ??= new SubjectRelationshipsRepository(_context);
 
                 return _subjectRelationshipsRepository;
+            }
+        }
+
+        public IRolesRepository RolesRepository
+        {
+            get
+            {
+                _rolesRepository ??= new RolesRepository(_context);
+
+                return _rolesRepository;
+            }
+        }
+
+        public IUsersRepository UsersRepository
+        {
+            get
+            {
+                _usersRepository ??= new UsersRepository(_context);
+
+                return _usersRepository;
+            }
+        }
+
+        public ICareersRepository CareersRepository
+        {
+            get
+            {
+                _careersRepository ??= new CareersRepository(_context);
+
+                return _careersRepository;
             }
         }
 
