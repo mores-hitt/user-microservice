@@ -12,10 +12,10 @@ service SubjectGrpc {
 }
 
 message GetAllResponse {
-    repeated SubjectResponse subjects = 1;
+    repeated SubjectDto subjects = 1;
 }
 
-message SubjectResponse {
+message SubjectDto {
     string code = 1;
     string name = 2;
     string department = 3;
@@ -25,26 +25,26 @@ message SubjectResponse {
 }
 
 message GetAllRelationshipsResponse {
-    repeated RelationshipResponse relationships = 1;
+    repeated SubjectRelationshipDto relationships = 1;
 }
 
-message RelationshipResponse {
+message SubjectRelationshipDto {
     string subject_code = 1;
     string pre_subject_code = 2;
 }
 
 message GetAllPrerequisitesResponse {
-    map <string, PrerequisiteResponse> prerequisites = 1;
+    map <string, PrerequisiteDto> prerequisites = 1;
 }
 
-message PrerequisiteResponse {
+message PrerequisiteDto {
     repeated string pre_subject_code = 1;
 }
 
 message GetAllPostRequisitesResponse {
-    map <string, PostRequisiteResponse> post_requisites = 1;
+    map <string, PostRequisiteDto> post_requisites = 1;
 }
 
-message PostRequisiteResponse {
+message PostRequisiteDto {
     repeated string post_subject_code = 1;
 }

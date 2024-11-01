@@ -23,7 +23,7 @@ namespace user_microservice.Src.Services
             //_authService = authService;
         }
 
-        public async Task<RepeatedField<SubjectResponse>> GetAll()
+        public async Task<RepeatedField<SubjectDto>> GetAll()
         {
             var subjects = await _unitOfWork.SubjectsRepository.Get();
 
@@ -33,26 +33,26 @@ namespace user_microservice.Src.Services
                 Console.WriteLine(subject.Name + " " + subject.Id);
             }
 
-            return _mapperService.MapRepeatedField<Subject, SubjectResponse>(subjects);
+            return _mapperService.MapRepeatedField<Subject, SubjectDto>(subjects);
         }
 
 
-        public async Task<RepeatedField<RelationshipResponse>> GetAllRelationships()
+        public async Task<RepeatedField<SubjectRelationshipDto>> GetAllRelationships()
         {
             var relationships = await _unitOfWork.SubjectRelationshipsRepository.Get();
-            return _mapperService.MapRepeatedField<SubjectRelationship, RelationshipResponse>(relationships);
+            return _mapperService.MapRepeatedField<SubjectRelationship, SubjectRelationshipDto>(relationships);
         }
 
-        public async Task<MapField<string, PrerequisiteResponse>> GetAllPrerequisites()
+        public async Task<MapField<string, PrerequisiteDto>> GetAllPrerequisites()
         {
             var relationshipsList = await _unitOfWork.SubjectRelationshipsRepository.Get();
-            var dictionary = new MapField<string, PrerequisiteResponse>();
+            var dictionary = new MapField<string, PrerequisiteDto>();
 
             relationshipsList.ForEach(r =>
             {
                 if (!dictionary.ContainsKey(r.SubjectCode))
                 {
-                    var preRequisites = new PrerequisiteResponse();
+                    var preRequisites = new PrerequisiteDto();
                     preRequisites.PreSubjectCode.Add(r.PreSubjectCode);
 
                     dictionary.Add(r.SubjectCode, preRequisites);
@@ -64,16 +64,16 @@ namespace user_microservice.Src.Services
             return dictionary;
         }
 
-        public async Task<MapField<string, PostRequisiteResponse>> GetAllPostRequisites()
+        public async Task<MapField<string, PostRequisiteDto>> GetAllPostRequisites()
         {
             var relationshipsList = await _unitOfWork.SubjectRelationshipsRepository.Get();
-            var dictionary = new MapField<string, PostRequisiteResponse>();
+            var dictionary = new MapField<string, PostRequisiteDto>();
 
             relationshipsList.ForEach(r => 
             {
                 if (!dictionary.ContainsKey(r.PreSubjectCode))
                 {
-                    var postRequisites = new PostRequisiteResponse();
+                    var postRequisites = new PostRequisiteDto();
                     postRequisites.PostSubjectCode.Add(r.SubjectCode);
 
                     dictionary.Add(r.PreSubjectCode, postRequisites);

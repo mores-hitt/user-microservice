@@ -5,13 +5,13 @@ namespace user_microservice.Src.Services.Interfaces
 {
     public interface ISubjectsService
     {
-        public Task<RepeatedField<SubjectResponse>> GetAll();
+        public Task<RepeatedField<SubjectDto>> GetAll();
 
-        public Task<RepeatedField<RelationshipResponse>> GetAllRelationships();
+        public Task<RepeatedField<SubjectRelationshipDto>> GetAllRelationships();
 
-        public Task<MapField<string, PrerequisiteResponse>> GetAllPrerequisites();
+        public Task<MapField<string, PrerequisiteDto>> GetAllPrerequisites();
 
-        public Task<MapField<string, PostRequisiteResponse>> GetAllPostRequisites();
+        public Task<MapField<string, PostRequisiteDto>> GetAllPostRequisites();
 
     }
 }

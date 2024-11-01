@@ -8,8 +8,8 @@ namespace user_microservice.Src.Extensions
     {
         public MappingProfile()
         {
-            CreateMap<Subject, SubjectResponse>();
-            CreateMap<SubjectRelationship, RelationshipResponse>();
+            CreateMap<Subject, SubjectDto>();
+            CreateMap<SubjectRelationship, SubjectRelationshipDto>();
         }
     }
 }
