@@ -24,7 +24,6 @@ namespace user_microservice.Src.Extensions
             AddDbContext(services, config);
             AddUnitOfWork(services);
             AddAuthentication(services, config);
-            AddHttpContextAccesor(services);
         }
 
         private static void InitEnvironmentVariables()
@@ -37,9 +36,7 @@ namespace user_microservice.Src.Extensions
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IMapperService, MapperService>();
             services.AddScoped<IAuthService, AuthService>();
-            //services.AddScoped<ICareersService, CareersService>();
             services.AddScoped<ISubjectsService, SubjectsService>();
-            //services.AddScoped<IResourcesService, ResourcesService>();
         }
 
         private static void AddSwaggerGen(IServiceCollection services)
@@ -87,12 +84,6 @@ namespace user_microservice.Src.Extensions
             });
             return services;
         }
-
-        private static void AddHttpContextAccesor(IServiceCollection services)
-        {
-            services.AddHttpContextAccessor();
-        }
-
 
     }
 }
