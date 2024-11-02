@@ -4,6 +4,9 @@ using user_microservice.Src.Repositories.Interfaces;
 using user_microservice.Src.Services.Interfaces;
 using DotNetEnv;
 using Grpc.Core;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace user_microservice.Src.Services
 {
@@ -47,6 +50,8 @@ namespace user_microservice.Src.Services
             return userRole;
         }
 
+        #region PRIVATE_METHODS
+
         private ClaimsPrincipal GetHttpUser(ServerCallContext callContext)
         {
             var httpContext = callContext.GetHttpContext();
@@ -55,6 +60,8 @@ namespace user_microservice.Src.Services
             
             return httpContext.User;
         }
+
+        #endregion
 
     }
 }

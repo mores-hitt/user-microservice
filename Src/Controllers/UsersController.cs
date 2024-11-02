@@ -1,5 +1,6 @@
 using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
+using user_microservice.Src.Exceptions;
 using user_microservice.Src.Protos;
 
 using user_microservice.Src.Services.Interfaces;
@@ -17,40 +18,33 @@ namespace user_microservice.Src.Controllers
 
         public override Task<UserDto> GetProfile(Empty request, ServerCallContext context)
         {
-            try
-            {
-                return _usersService.GetProfile(context);
-            }
-            catch (System.Exception e)
-            {
-                switch (e)
-                {
-                    case UnauthorizedAccessException:
-                        throw new RpcException(new Status(StatusCode.Unauthenticated, e.Message));
-                    default:
-                        throw new RpcException(new Status(StatusCode.Internal, e.Message));
-                }
-            }
+            return _usersService.GetProfile(context);
         }
 
         public override async Task<UserDto> EditProfile(EditProfileDto request, ServerCallContext context)
         {
-            try
-            {
-                return await _usersService.EditProfile(request, context);
-            }
-            catch (System.Exception e)
-            {
-                switch (e)
-                {
-                    case UnauthorizedAccessException:
-                        throw new RpcException(new Status(StatusCode.Unauthenticated, e.Message));
-                    default:
-                        throw new RpcException(new Status(StatusCode.Internal, e.Message));
-                }
-            }
-        
+            return await _usersService.EditProfile(request, context);
         }
 
+        public override async Task<GetUserProgressResponse> GetUserProgress(Empty request, ServerCallContext context)
+        {
+            var userProgress = await _usersService.GetUserProgress(context);
+            return new GetUserProgressResponse
+            {
+                UserProgress = { userProgress }
+            };
+
+        }
+    
+        public override async Task<Empty> SetUserProgress(UpdateUserProgressDto request, ServerCallContext context)
+        {
+            await _usersService.SetUserProgress(request, context);
+            return new Empty();
+        }
+    
     }
 }
+
+//token:
+//eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJmZXJuYUBob3RtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6InN0dWRlbnQiLCJleHAiOjE3MzA2OTgxNTl9.q1K_vXPCS7fabYSAtYxIDXxhGcHXEEQ61yx0EC_Cnhg
+        

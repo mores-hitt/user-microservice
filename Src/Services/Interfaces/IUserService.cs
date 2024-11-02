@@ -14,6 +14,10 @@ namespace user_microservice.Src.Services.Interfaces
         public Task<UserDto> EditProfile(EditProfileDto editProfileDto, ServerCallContext context);
 
         public Task<UserDto> GetByEmail(string email);
+        
+        public Task<RepeatedField<UserProgressDto>> GetUserProgress(ServerCallContext context);
+
+        public Task SetUserProgress(UpdateUserProgressDto subjects, ServerCallContext context);
 
         /*
 

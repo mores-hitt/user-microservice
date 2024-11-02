@@ -8,6 +8,7 @@ service UserGrpc {
     rpc GetProfile (Empty) returns (UserDto);
     rpc EditProfile (EditProfileDto) returns (UserDto);
     rpc GetUserProgress (Empty) returns (GetUserProgressResponse);
+    rpc SetUserProgress (UpdateUserProgressDto) returns (Empty);
 }
 
 message UserDto {
@@ -34,5 +35,11 @@ message GetUserProgressResponse {
 }
 
 message UserProgressDto {
-    string subject_code = 1;
+    int32 id = 1;
+    string subject_code = 2;
+}
+
+message UpdateUserProgressDto{
+    repeated string add_subjects = 1;
+    repeated string delete_subjects = 2;
 }
