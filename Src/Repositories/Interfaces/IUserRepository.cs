@@ -32,7 +32,7 @@ namespace user_microservice.Src.Repositories.Interfaces
         /// <param name="userId">Id of the user</param>
         /// <returns>Progress of the User</returns>
         public Task<List<UserProgress>?> GetProgressByUser(int userId);
-
+ 
         public Task<bool> AddProgress(List<UserProgress> progress); 
         
         public Task<bool> RemoveProgress(List<UserProgress> progress, int userId); 

@@ -4,9 +4,6 @@ using user_microservice.Src.Repositories.Interfaces;
 using user_microservice.Src.Services.Interfaces;
 using DotNetEnv;
 using Grpc.Core;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace user_microservice.Src.Services
 {
@@ -31,8 +28,6 @@ namespace user_microservice.Src.Services
         public string GetUserEmailInToken(ServerCallContext callContext)
         {
             var httpUser = GetHttpUser(callContext);
-
-            httpUser.Claims.ToList().ForEach(claim => Console.WriteLine(claim.Type + "  " + claim.Value));
 
             //Get Claims from JWT
             var userEmail = httpUser.FindFirstValue(ClaimTypes.Email) ??

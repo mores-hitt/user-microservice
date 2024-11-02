@@ -1,6 +1,4 @@
 using Grpc.Core;
-using Microsoft.AspNetCore.Authorization;
-using user_microservice.Src.Exceptions;
 using user_microservice.Src.Protos;
 
 using user_microservice.Src.Services.Interfaces;

@@ -39,13 +39,6 @@ namespace user_microservice.Src.Services
             var user = await _unitOfWork.UsersRepository.GetByEmail(email)
                                         ?? throw new EntityNotFoundException($"User with email: {email} not found");
 
-            var allUsers = await _unitOfWork.UsersRepository.GetAll();
-
-            allUsers.ForEach(u => 
-            {
-                Console.WriteLine(u.Id + " " + u.Email);
-            });
-
             return user;
         }
 
@@ -154,7 +147,6 @@ namespace user_microservice.Src.Services
         }
 
         #endregion
-        
 
     }
 

@@ -13,7 +13,6 @@ namespace user_microservice.Src.Repositories
         private IRolesRepository _rolesRepository = null!;
 
         private ICareersRepository  _careersRepository = null!;
-        //TODO: poner los repository que faltan
 
         private readonly DataContext _context;
         private bool _disposed = false;
@@ -72,10 +71,7 @@ namespace user_microservice.Src.Repositories
                 return _careersRepository;
             }
         }
-
-        //TODO: poner los repository que faltan
-
-
+        
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)

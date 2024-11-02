@@ -1,17 +1,14 @@
 using Grpc.Core;
 using Grpc.Core.Interceptors;
-using Microsoft.Extensions.Logging;
 using user_microservice.Src.Exceptions;
 using user_microservice.Src.Common.Constants;
 using System.Security.Authentication;
-using System.Text.Json;
 
 namespace user_microservice.Src.Middlewares
 {
     public class ExceptionHandlingInterceptor : Interceptor
     {
         private readonly ILogger<ExceptionHandlingInterceptor> _logger;
-
         private readonly Dictionary<Type, (string ErrorMessage, int StatusCode)> exceptionMapping = new()
             {
             { typeof(InvalidCredentialException), (ErrorMessages.InvalidCredentials, 16) },
@@ -24,7 +21,6 @@ namespace user_microservice.Src.Middlewares
             {typeof(UnauthorizedAccessException), (ErrorMessages.UnauthorizedAccess, 16)},
             {typeof(DuplicateEntityException), (ErrorMessages.EntityDuplicated, 3)}
         };
-
         public ExceptionHandlingInterceptor(ILogger<ExceptionHandlingInterceptor> logger)
         {
             _logger = logger;

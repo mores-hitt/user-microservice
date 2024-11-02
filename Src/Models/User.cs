@@ -24,8 +24,6 @@ namespace user_microservice.Src.Models
 
         public bool IsEnabled { get; set; } = true;
 
-
-
         public int CareerId { get; set; }
         public Career Career { get; set; } = null!;
 

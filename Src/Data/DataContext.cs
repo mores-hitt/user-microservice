@@ -21,8 +21,7 @@ namespace user_microservice.Src.Data
         public DataContext(DbContextOptions<DataContext> options): base(options)
         {
         }
-
-
+        
         public override int SaveChanges()
         {
             UpdateTimestamps();

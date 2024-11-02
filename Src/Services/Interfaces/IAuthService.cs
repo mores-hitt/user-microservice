@@ -1,5 +1,3 @@
-using Google.Protobuf.Collections;
-using user_microservice.Src.Protos;
 using Grpc.Core;
 
 namespace user_microservice.Src.Services.Interfaces
@@ -8,6 +6,5 @@ namespace user_microservice.Src.Services.Interfaces
     {
         public string GetUserEmailInToken(ServerCallContext context);
 
-        //public string CreateToken(string email, string role);
     }
 }

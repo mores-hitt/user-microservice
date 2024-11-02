@@ -6,7 +6,8 @@ namespace user_microservice.Src.Repositories
 {
     public class SubjectsRepository : GenericRepository<Subject>, ISubjectsRepository
     {
-        public SubjectsRepository(DataContext context)
-            : base(context) { }
+        public SubjectsRepository(DataContext context): base(context)
+        {
+        }
     }
 }

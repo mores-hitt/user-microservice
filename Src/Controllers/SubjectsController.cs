@@ -8,14 +8,12 @@ namespace user_microservice.Src.Controllers
 {
     public class SubjectsController : SubjectGrpc.SubjectGrpcBase
     {
-
         private readonly ISubjectsService _subjectsService;
 
         public SubjectsController(ISubjectsService subjectsService)
         {
             _subjectsService = subjectsService;
         }
-
 
         public override async Task<GetAllResponse> GetAll(Empty request, ServerCallContext context)
         {
@@ -27,7 +25,6 @@ namespace user_microservice.Src.Controllers
 
             return response;
         }
-    
 
         public override async Task<GetAllRelationshipsResponse> GetAllRelationships(Empty request, ServerCallContext context)
         {

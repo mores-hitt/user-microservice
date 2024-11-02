@@ -176,6 +176,11 @@ namespace user_microservice.Src.Data
             context.SaveChanges();
         }
 
+        /// </summary>
+        /// Seed the database with the users in the json file and save changes if the database is empty.
+        /// </summary> 
+        /// <param name="context">Database Context</param>
+        /// <param name="options">Options to deserialize json</param>
         private static void SeedUsers(DataContext context, JsonSerializerOptions options)
         {
             var result = context.Users?.Any();
@@ -201,7 +206,5 @@ namespace user_microservice.Src.Data
             context.Users?.AddRange(usersList);
             context.SaveChanges();
         }
-
-    
     }
 }

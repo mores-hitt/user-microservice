@@ -68,7 +68,6 @@ namespace user_microservice.Src.Repositories
                 .ExecuteDeleteAsync() > 0;
 
             return result;
-
         }
     }
 }

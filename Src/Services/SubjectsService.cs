@@ -1,10 +1,8 @@
-using System.Runtime.CompilerServices;
 using Google.Protobuf.Collections;
 using user_microservice.Src.Protos;
 using user_microservice.Src.Models;
 using user_microservice.Src.Repositories.Interfaces;
 using user_microservice.Src.Services.Interfaces;
-using Google.Protobuf;
 
 namespace user_microservice.Src.Services
 {
@@ -26,12 +24,6 @@ namespace user_microservice.Src.Services
         public async Task<RepeatedField<SubjectDto>> GetAll()
         {
             var subjects = await _unitOfWork.SubjectsRepository.Get();
-
-            Console.WriteLine("Subjects: ");
-            foreach (var subject in subjects)
-            {
-                Console.WriteLine(subject.Name + " " + subject.Id);
-            }
 
             return _mapperService.MapRepeatedField<Subject, SubjectDto>(subjects);
         }
