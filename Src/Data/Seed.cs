@@ -37,6 +37,7 @@ namespace user_microservice.Src.Data
             SeedRoles(context, options);
             SeedSubjects(context, options);
             SeedCareers(context, options);
+            SeedUsers(context, options);
         }
 
         /// <summary>
@@ -172,6 +173,32 @@ namespace user_microservice.Src.Data
             });
 
             context.SubjectRelationships?.AddRange(subjectsRelationshipsList);
+            context.SaveChanges();
+        }
+
+        private static void SeedUsers(DataContext context, JsonSerializerOptions options)
+        {
+            var result = context.Users?.Any();
+            if (result is true or null) return;
+            var path = "Src/Data/DataSeeders/UsersData.json";
+            var usersData = File.ReadAllText(path);
+            var usersList = JsonSerializer.Deserialize<List<User>>(usersData, options) ??
+                throw new Exception("UsersData.json is empty");
+            // Normalize the name and code of the careers
+            usersList.ForEach(s =>
+            {
+                s.Name = s.Name.ToLower();
+                s.FirstLastName = s.FirstLastName.ToLower();
+                s.SecondLastName = s.SecondLastName.ToLower();
+                s.CreatedAt = DateTime.SpecifyKind(s.CreatedAt, DateTimeKind.Utc);
+                s.UpdatedAt = DateTime.SpecifyKind(s.UpdatedAt, DateTimeKind.Utc);
+                if (s.DeletedAt.HasValue)
+                {
+                    s.DeletedAt = DateTime.SpecifyKind(s.DeletedAt.Value, DateTimeKind.Utc);
+                }
+            });
+
+            context.Users?.AddRange(usersList);
             context.SaveChanges();
         }
 
